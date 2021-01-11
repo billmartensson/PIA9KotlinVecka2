@@ -21,21 +21,21 @@
         android:id="@+id/plusButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
         android:text="Plus"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/counterTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/errorTextView" />
 
     <Button
         android:id="@+id/minusButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:text="Minus"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/counterTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/errorTextView" />
 
     <Button
         android:id="@+id/resetButton"
@@ -80,4 +80,21 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/errorTextView"
+        android:layout_width="180dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="8dp"
+        android:background="#FF0000"
+        android:gravity="center"
+        android:text="ERROR"
+        android:textColor="#FFFFFF"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/counterTextView"
+        tools:visibility="visible" />
 </androidx.constraintlayout.widget.ConstraintLayout>

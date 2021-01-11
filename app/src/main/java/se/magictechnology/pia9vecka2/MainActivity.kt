@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -23,24 +24,13 @@ class MainActivity : AppCompatActivity() {
         var plusButton = findViewById<Button>(R.id.plusButton)
 
         plusButton.setOnClickListener {
-
-            counterNumber = counterNumber + 1
-
-            counterTextView.text = counterNumber.toString()
+            calculateNumber("plus")
         }
 
         var minusButton = findViewById<Button>(R.id.minusButton)
 
         minusButton.setOnClickListener {
-
-            counterNumber = counterNumber - 1
-
-            if(counterNumber < 0)
-            {
-                counterNumber = 0
-            }
-
-            counterTextView.text = counterNumber.toString()
+            calculateNumber("minus")
         }
 
         var resetButton = findViewById<Button>(R.id.resetButton)
@@ -77,12 +67,12 @@ class MainActivity : AppCompatActivity() {
             }
              */
 
-            enteredText.toIntOrNull()?.let { enteredNumber ->
+
+            makeNumber(enteredText)?.let {enteredNumber ->
                 counterNumber = enteredNumber
             }
 
             counterTextView.text = counterNumber.toString()
-
 
             numberEditText.setText("")
 
@@ -111,8 +101,41 @@ class MainActivity : AppCompatActivity() {
         counterTextView.text = counterNumber.toString()
     }
 
+    fun calculateNumber(calcMode : String)
+    {
+        if(calcMode == "plus")
+        {
+            counterNumber = counterNumber + 1
+        }
+        if(calcMode == "minus")
+        {
+            counterNumber = counterNumber - 1
+        }
+
+        if(counterNumber < 0)
+        {
+            counterNumber = 0
+        }
 
 
+        var counterTextView = findViewById<TextView>(R.id.counterTextView)
+        counterTextView.text = counterNumber.toString()
 
+    }
+
+    fun makeNumber(numbertext : String) : Int?
+    {
+        var theNumber = numbertext.toIntOrNull()
+
+        if(theNumber == null)
+        {
+            findViewById<TextView>(R.id.errorTextView).visibility = View.VISIBLE
+        } else {
+            findViewById<TextView>(R.id.errorTextView).visibility = View.GONE
+        }
+
+
+        return theNumber
+    }
 
 }
